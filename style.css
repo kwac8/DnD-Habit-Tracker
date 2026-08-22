@@ -166,21 +166,6 @@ button, input, select, textarea {
     padding-top: 5px;
 }
 
-.quests-list{
-    flex: 1 1 auto;
-    min-height: 0;
-    padding: 20px;
-    font-size: clamp(0.9rem, 1.5vw, 2rem);
-    line-height: 40px;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-
-    /* Firefox */
-    scrollbar-width: thin;
-    scrollbar-color: #567CBD transparent;
-}
-
 /* Chrome / Safari / Edge */
 .quests-list::-webkit-scrollbar {
     width: 8px;
@@ -195,30 +180,121 @@ button, input, select, textarea {
     border-radius: 10px;
 }
 
-.quest-buttons{
+.quests-list {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 5px;
+    font-size: clamp(0.9rem, 1.5vw, 2rem);
+    line-height: 40px;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+/* Quest input + button */
+.quest-input-row {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    gap: 20px;
-    height: fit-content;
-    padding: 20px;
-    border-top: 3px solid gray;
+    gap: 5px;
+    width: 100%;
 }
 
-#addButton{
-    padding: 10px;
-    border-radius: 10px;
-    font-size: clamp(0.7rem, 1vw, 1.5rem);
+.quest-input-row input {
+    flex: 1;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #567CBD;
+    background: transparent;
+    color: #567CBD;
+    outline: none;
+    padding: 5px;
     letter-spacing: 2px;
 }
 
-#deleteButton{
-    padding: 10px;
-    border-radius: 10px;
-    font-size: clamp(0.7rem, 1vw, 1.5rem);
-    letter-spacing: 2px;
+.quest-input-row button {
+    flex: 0 0 30px;
+    border: none;
+    background-color: #567CBD;
+    color: #DDD3C9;
+    border-radius: 5px;
+    width: 15px;
+    height: 20px;
+    cursor: pointer;
 }
+
+.quest-input-row button:hover {
+    background-color: #2F4156;
+}
+
+/* Quest list */
+#questList {
+    list-style: none;
+    padding: 0;
+    padding-right: 20px;
+    margin: 0;
+    width: 100%;
+    height: calc(100% - 40px);
+    overflow-y: auto;
+    color: #567CBD;
+    letter-spacing: 2px;
+    scrollbar-width: thin;
+    scrollbar-color: #567CBD transparent;
+}
+
+/* Individual quest */
+.questItem {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 5px;
+    padding: 6px 0;
+    margin: 0;
+    font-size: clamp(.7rem, 1.2vw, 3rem);
+    line-height: 1.5;
+}
+
+/* Checkbox */
+.questItem input[type="checkbox"] {
+    accent-color: #567CBD;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Quest text */
+.questItem span {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.questDone { text-decoration: line-through; opacity: 0.5; }
+
+.deleteQuestBtn {
+    flex: 0 0 30px;
+    border: none;
+    background-color: #567CBD;
+    color: #DDD3C9;
+    width: 15px;
+    height: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.deleteQuestBtn:hover {
+    background-color: #2F4156;
+    color: #DDD3C9;
+}
+
+
 
 /* Mobile Media Query */
 
@@ -276,12 +352,6 @@ button, input, select, textarea {
         padding: 5px;
         line-height: 25px;
     }
-
-
-    #addButton, #deleteButton{
-        padding: 5px;
-    }
-
 }
 
 /* Mobile Landscape Media Query */
@@ -353,17 +423,6 @@ button, input, select, textarea {
         padding: 5px;
         line-height: 25px;
     }
-
-    .quest-buttons{
-        gap: 20px;
-        height: fit-content;
-        padding: 10px;
-
-    }
-
-    #addButton, #deleteButton{
-        padding: 5px;
-    }
 }
 
 /* Tablet Media Query */
@@ -433,11 +492,6 @@ button, input, select, textarea {
         line-height: 30px;
         font-size: 1rem;
     }
-
-
-    #addButton, #deleteButton{
-        padding: 10px;
-    }
 }
 
 
@@ -498,9 +552,4 @@ button, input, select, textarea {
         min-height: 0;
         overflow-y: auto;
     }
-
-    .quest-buttons {
-        padding: 10px;
-    }
-
 }
