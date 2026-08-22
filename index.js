@@ -1,4 +1,50 @@
-// 1. Quests --till 105
+
+const player = {
+    name: "Adventurer",
+    class: "Mage",
+    level: 1,
+    xp: 0,
+    gold: 0
+};
+
+function getXpRequired(){
+    return player.level * 100;
+}
+
+function checkLevelUp() {
+    let xpRequired = getXpRequired();
+
+    while (player.xp >= xpRequired) {
+        player.xp -= xpRequired;
+        player.level++;
+
+        xpRequired = getXpRequired();
+    }
+}
+
+let playerClass = document.getElementById("playerClass");
+let playerLevel = document.getElementById("playerLevel");
+let playerGold = document.getElementById("playerGold");
+let xpProgress = document.getElementById("xpProgress");
+
+function renderPlayer(){
+    playerLevel.textContent = player.level;
+    playerGold.textContent = player.gold;
+    playerClass.textContent = "Class: " + player.class;
+
+    renderXpBar();
+}
+
+function renderXpBar(){
+    let xpRequired = getXpRequired();
+
+    let precentage = (player.xp / xpRequired) * 100;
+
+    precentage = Math.min(precentage, 100);
+
+    xpProgress.style.width = precentage + "%";
+}
+
 let questInput = document.getElementById("questInput");
 let addQuestBtn = document.getElementById("addQuestBtn");
 let questList = document.getElementById("questList");
@@ -50,19 +96,34 @@ function renderQuests() {
     }
 
     saveQuests();
+    renderPlayer();
 }
 
 function handleCheck(event) {
-    let index = event.target.getAttribute("data-index");
-    index = parseInt(index);
+    let index = parseInt(event.target.getAttribute("data-index"));
+    let quest = myQuests[index];
 
-    if (myQuests[index].done === true) {
-        myQuests[index].done = false;
+    if (quest.done === false) {
+        quest.done = true;
+        completeQuest(index);
     } else {
-        myQuests[index].done = true;
+        quest.done = false;
     }
 
     renderQuests();
+}
+
+function completeQuest(index){
+    let quest = myQuests[index];
+
+    if (quest.rewarded === true){
+        return;
+    }
+    player.xp += quest.xp;
+    player.gold += quest.gold;
+    quest.rewarded = true;
+
+    checkLevelUp();
 }
 
 function handleDelete(event) {
@@ -85,7 +146,10 @@ function addQuest() {
 
     let newQuest = {};
     newQuest.text = text;
+    newQuest.xp = 20;
+    newQuest.gold = 10;
     newQuest.done = false;
+    newQuest.rewarded = false;
 
     myQuests.push(newQuest);
 
@@ -102,4 +166,3 @@ questInput.addEventListener("keydown", function(event) {
 });
 
 renderQuests();
-// 1
