@@ -7,6 +7,14 @@ const player = {
     gold: 0
 };
 
+const stats = {
+    intelligence: 0,
+    wisdom: 0,
+    strength: 0,
+    dexterity: 0,
+    mana: 100
+};
+
 function getXpRequired(){
     return player.level * 100;
 }
@@ -43,6 +51,23 @@ function renderXpBar(){
     precentage = Math.min(precentage, 100);
 
     xpProgress.style.width = precentage + "%";
+}
+
+let selectionWindow = document.getElementById("selection-window");
+let confirmSelectionWindow = document.getElementById("confirmCategory");
+let intelligence = document.getElementById("intelligence");
+let wisdom = document.getElementById("wisdom");
+let strength = document.getElementById("strength");
+let dexterity = document.getElementById("dexterity");
+let mana = document.getElementById("mana");
+
+function renderStats(){
+    intelligence.textContent = "Intelligence: " + stats.intelligence;
+    wisdom.textContent = "Wisdom: " + stats.wisdom;
+    strength.textContent = "Strength: " + stats.strength;
+    dexterity.textContent = "Dexterity: " + stats.dexterity;
+    mana.textContent = "Mana: " + stats.mana;
+
 }
 
 let questInput = document.getElementById("questInput");
@@ -97,6 +122,7 @@ function renderQuests() {
 
     saveQuests();
     renderPlayer();
+    renderStats();
 }
 
 function handleCheck(event) {
@@ -113,15 +139,28 @@ function handleCheck(event) {
     renderQuests();
 }
 
-function completeQuest(index){
+function completeQuest(index) {
     let quest = myQuests[index];
 
-    if (quest.rewarded === true){
+    if (quest.rewarded === true) {
         return;
     }
+
     player.xp += quest.xp;
     player.gold += quest.gold;
     quest.rewarded = true;
+
+    stats.mana += 5;
+
+    if (quest.category === "Study") {
+        stats.intelligence += 2;
+    } else if (quest.category === "Train") {
+        stats.strength += 2;
+    } else if (quest.category === "Read") {
+        stats.wisdom += 2;
+    } else if (quest.category === "Clean") {
+        stats.dexterity += 2;
+    }
 
     checkLevelUp();
 }
@@ -137,6 +176,7 @@ function handleDelete(event) {
 }
 
 function addQuest() {
+
     let text = questInput.value;
     text = text.trim();
 
@@ -144,8 +184,27 @@ function addQuest() {
         return;
     }
 
+    selectionWindow.style.display = "block";
+
+    renderQuests();
+}
+
+confirmCategory.addEventListener("click", function() {
+
+    let selectedCategory = document.querySelector(
+        'input[name="category"]:checked'
+    );
+
+    if (selectedCategory === null) {
+        return;
+    }
+
+    let text = questInput.value.trim();
+
     let newQuest = {};
+
     newQuest.text = text;
+    newQuest.category = selectedCategory.value;
     newQuest.xp = 20;
     newQuest.gold = 10;
     newQuest.done = false;
@@ -154,8 +213,11 @@ function addQuest() {
     myQuests.push(newQuest);
 
     questInput.value = "";
+
+    selectionWindow.style.display = "none";
+
     renderQuests();
-}
+});
 
 addQuestBtn.addEventListener("click", addQuest);
 

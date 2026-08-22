@@ -14,12 +14,11 @@
                 <img src="assets/elf.jpg">
             </div>
             <div class="character-stats">
-                <p>Mana</p>
-                <p>Dexterity</p>
-                <p>Mana</p>
-                <p>Intelligence</p>
-                <p>Strength</p>
-                <p>Endurance</p>
+                <p id="mana">Mana: 100</p>
+                <p id="dexterity">Dexterity: 0</p>
+                <p id="wisdom">Wisdom: 0</p>
+                <p id="intelligence">Intelligence: 0</p>
+                <p id="strength">Strength: 0</p>
             </div>
 
             <div class="character-info">
@@ -32,7 +31,7 @@
                     <div id="xpProgress"></div>
                 </div>
             </div>
-            
+
             <div class="hp-container">
                 <span class="hp-label">HP</span>
                 <div class="hp-bar"></div>
@@ -51,7 +50,30 @@
                 <ul id="questList"></ul>
             </div>
         </div>
-        
+
+    </div>
+
+    <div class="selection-window" id="selection-window">
+        <label class="category-option">
+            <input type="radio" name="category" value="Study">
+            <span>Study/Work</span>
+        </label>
+
+        <label class="class-option">
+            <input type="radio" name="category" value="Train">
+            <span>Train</span>
+        </label>
+
+        <label class="class-option">
+            <input type="radio" name="category" value="Read">
+            <span>Read</span>
+        </label>
+
+        <label class="class-option">
+            <input type="radio" name="category" value="Clean">
+            <span>Clean</span>
+        </label>
+        <button id="confirmCategory">Choose</button>
     </div>
 
 

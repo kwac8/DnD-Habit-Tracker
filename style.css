@@ -304,7 +304,21 @@ button, input, select, textarea {
     color: #DDD3C9;
 }
 
-
+.selection-window{
+    display: none;
+    flex-direction: column;
+    line-height: 40px;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    height: 30vh;
+    padding: 20px;
+    border-radius: 20px;
+    border: solid 3px gray;
+    z-index: 50;
+    width: fit-content;
+    background-color: bisque;
+}
 
 /* Mobile Media Query */
 
