@@ -2,11 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Screen</title>
 </head>
 <body>
-    <script rel="index.js"></script>
+
+    <div class="char-container">
+        <div class="username-container">
+            <h1>Choose a name:</h1>
+            <input type="text" id="username-input" class="username">
+        </div>
+
+        <div class="selection-container">
+            <h2>Choose a class:</h2>
+            <label class="class-option">
+                <input type="radio" name="class" value="Mage" id="mage">
+                <span>Mage</span>
+            </label>
+
+            <label class="class-option">
+                <input type="radio" name="class" value="Assassin" id="assassin">
+                <span>Assassin</span>
+            </label>
+
+            <label class="class-option">
+                <input type="radio" name="class" value="Warlord" id="warlord">
+                <span>Warlord</span>
+            </label>
+
+            <label class="class-option">
+                <input type="radio" name="class" value="Alchemist" id="alchemist">
+                <span>Alchemist</span>
+            </label>
+
+            <label class="class-option">
+                <input type="radio" name="class" value="Berserker" id="berserker">
+                <span>Berserker</span>
+            </label>
+
+            <button id="continueBtn">Continue</button>
+        </div>
+    </div>
+
+
+    <script src="character.js"></script>
 </body>
 </html>

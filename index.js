@@ -1,7 +1,7 @@
 
 const player = {
-    name: "Adventurer",
-    class: "Mage",
+    name: "",
+    class: "",
     level: 1,
     xp: 0,
     gold: 0
@@ -14,6 +14,25 @@ const stats = {
     dexterity: 0,
     mana: 100
 };
+
+// Load character
+const savedPlayerData = localStorage.getItem("playerData");
+
+if (savedPlayerData !== null) {
+
+    const playerData = JSON.parse(savedPlayerData);
+
+    Object.assign(player, playerData.player);
+    Object.assign(stats, playerData.stats);
+}
+
+function savePlayerData() {
+    localStorage.setItem("playerData", JSON.stringify({
+        player: player,
+        stats: stats
+    }));
+}
+//
 
 function getXpRequired(){
     return player.level * 100;
@@ -164,6 +183,7 @@ function completeQuest(index) {
 
     checkLevelUp();
     getAchievement();
+    savePlayerData();
 }
 
 function handleDelete(event) {
@@ -190,7 +210,7 @@ function addQuest() {
     renderQuests();
 }
 
-confirmCategory.addEventListener("click", function() {
+confirmSelectionWindow.addEventListener("click", function() {
 
     let selectedCategory = document.querySelector(
         'input[name="category"]:checked'
@@ -243,7 +263,7 @@ let achievements = [
 ];
 
 function getAchievement(){
-    if(stats.level === 2 && achievements[0].unlocked === false){
+    if(player.level === 2 && achievements[0].unlocked === false){
         alert(achievements[0].name);
         achievements[0].unlocked = true;
     };
@@ -267,4 +287,8 @@ function getAchievement(){
         alert(achievements[6].name);
         achievements[6].unlocked = true;
     }
+}
+
+function saveAchievements() {
+    localStorage.setItem("achievements", JSON.stringify(achievements));
 }
