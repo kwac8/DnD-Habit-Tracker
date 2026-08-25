@@ -48,7 +48,7 @@ continueBtn.addEventListener("click", function() {
     console.log("PLAYER:", player);
     console.log("STATS:", stats);
 
-    window.location.href = "/index.html";
+    window.location.href = "../index.html";
 });
 
 function setStartingStats() {

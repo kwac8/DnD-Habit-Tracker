@@ -22,8 +22,15 @@ if (savedPlayerData !== null) {
 
     const playerData = JSON.parse(savedPlayerData);
 
-    Object.assign(player, playerData.player);
-    Object.assign(stats, playerData.stats);
+    if (playerData.player.name === "" || playerData.player.class === "") {
+        window.location.href = "pages/character.html";
+    } else {
+        Object.assign(player, playerData.player);
+        Object.assign(stats, playerData.stats);
+    }
+
+} else {
+    window.location.href = "pages/character.html";
 }
 
 function savePlayerData() {
