@@ -163,6 +163,7 @@ function completeQuest(index) {
     }
 
     checkLevelUp();
+    getAchievement();
 }
 
 function handleDelete(event) {
@@ -228,3 +229,42 @@ questInput.addEventListener("keydown", function(event) {
 });
 
 renderQuests();
+
+//achievement system
+
+let achievements = [
+    { name: "Getting started", unlocked: false },
+    { name: "Hardworker", unlocked: false },
+    { name: "Oath keeper", unlocked: false },
+    { name: "Growing strong", unlocked: false },
+    { name: "Mastermind", unlocked: false },
+    { name: "Your reiatsu is so big!", unlocked: false },
+    { name: "Bankai", unlocked: false }
+];
+
+function getAchievement(){
+    if(stats.level === 2 && achievements[0].unlocked === false){
+        alert(achievements[0].name);
+        achievements[0].unlocked = true;
+    };
+    if(stats.strength === 10 && achievements[3].unlocked === false){
+        alert(achievements[3].name);
+        achievements[3].unlocked = true;
+    }
+    if(stats.dexterity === 10 && achievements[2].unlocked === false){
+        alert(achievements[2].name);
+        achievements[2].unlocked = true;
+    }
+    if(stats.intelligence === 10 && achievements[4].unlocked === false){
+        alert(achievements[4].name);
+        achievements[4].unlocked = true;
+    }
+    if(stats.mana === 500 && achievements[5].unlocked === false){
+        alert(achievements[5].name);
+        achievements[5].unlocked = true;
+    }
+    if(stats.mana === 1000 && achievements[6].unlocked === false){
+        alert(achievements[6].name);
+        achievements[6].unlocked = true;
+    }
+}
