@@ -29,7 +29,7 @@ button, input, select, textarea {
 
 @font-face {
   font-family: 'Minecraft';
-  src: url('/Minecraft.ttf') format('truetype');
+  src: url('../Minecraft.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
