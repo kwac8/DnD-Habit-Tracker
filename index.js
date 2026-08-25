@@ -53,11 +53,13 @@ let playerClass = document.getElementById("playerClass");
 let playerLevel = document.getElementById("playerLevel");
 let playerGold = document.getElementById("playerGold");
 let xpProgress = document.getElementById("xpProgress");
+let playerName = document.getElementById("name");
 
 function renderPlayer(){
     playerLevel.textContent = player.level;
     playerGold.textContent = player.gold;
     playerClass.textContent = "Class: " + player.class;
+    playerName.textContent = "Name: " + player.name;
 
     renderXpBar();
 }
