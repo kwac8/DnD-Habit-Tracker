@@ -45,6 +45,7 @@ button, input, select, textarea {
     border-radius: 20px;
     justify-content: center;
     align-items: center;
+    margin: 10px;
 }
 
 .username-container, .selection-container{
