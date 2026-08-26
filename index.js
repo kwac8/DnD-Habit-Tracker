@@ -1,4 +1,6 @@
 
+const questManaCost = 10;
+
 const player = {
     name: "",
     class: "",
@@ -61,6 +63,7 @@ let playerLevel = document.getElementById("playerLevel");
 let playerGold = document.getElementById("playerGold");
 let xpProgress = document.getElementById("xpProgress");
 let playerName = document.getElementById("name");
+let manaDrain = document.getElementById("manaDrain");
 
 function renderPlayer(){
     playerLevel.textContent = player.level;
@@ -69,16 +72,26 @@ function renderPlayer(){
     playerName.textContent = "Name: " + player.name;
 
     renderXpBar();
+    renderManaBar();
 }
 
 function renderXpBar(){
     let xpRequired = getXpRequired();
 
-    let precentage = (player.xp / xpRequired) * 100;
+    let percentage = (player.xp / xpRequired) * 100;
 
-    precentage = Math.min(precentage, 100);
+    percentage = Math.min(percentage, 100);
 
-    xpProgress.style.width = precentage + "%";
+    xpProgress.style.width = percentage + "%";
+}
+
+function renderManaBar() {
+    let percentage = (player.mana / player.maxMana) * 100;
+
+    percentage = Math.max(percentage, 0);
+    percentage = Math.min(percentage, 100);
+
+    manaDrain.style.width = percentage + "%";
 }
 
 let selectionWindow = document.getElementById("selection-window");
@@ -87,7 +100,6 @@ let intelligence = document.getElementById("intelligence");
 let wisdom = document.getElementById("wisdom");
 let strength = document.getElementById("strength");
 let dexterity = document.getElementById("dexterity");
-let mana = document.getElementById("mana");
 
 function renderStats(){
 
@@ -102,9 +114,6 @@ function renderStats(){
 
     dexterity.textContent =
         "Dexterity: " + player.stats.dexterity;
-
-    mana.textContent =
-        "Mana: " + player.mana;
 }
 
 let questInput = document.getElementById("questInput");
@@ -187,7 +196,7 @@ function completeQuest(index) {
     player.gold += quest.gold;
     quest.rewarded = true;
 
-    player.mana += 5;
+    player.mana = Math.max(0, player.mana - quest.manaCost);
 
     if (quest.category === "Study") {
         player.stats.intelligence += 2;
@@ -251,6 +260,7 @@ confirmSelectionWindow.addEventListener("click", function() {
     newQuest.gold = 10;
     newQuest.done = false;
     newQuest.rewarded = false;
+    newQuest.manaCost = questManaCost;
 
     myQuests.push(newQuest);
 
@@ -269,10 +279,7 @@ questInput.addEventListener("keydown", function(event) {
     }
 });
 
-renderQuests();
-
 //achievement system
-
 let achievements = [
     { name: "Getting started", unlocked: false },
     { name: "Hardworker", unlocked: false },
@@ -300,16 +307,20 @@ function getAchievement(){
         alert(achievements[4].name);
         achievements[4].unlocked = true;
     }
-    if(player.stats.mana === 500 && achievements[5].unlocked === false){
+    if(player.maxMana === 500 && achievements[5].unlocked === false){
         alert(achievements[5].name);
         achievements[5].unlocked = true;
     }
-    if(player.stats.mana === 1000 && achievements[6].unlocked === false){
+    if(player.maxMana === 1000 && achievements[6].unlocked === false){
         alert(achievements[6].name);
         achievements[6].unlocked = true;
     }
+    
+    saveAchievements();
 }
 
 function saveAchievements() {
     localStorage.setItem("achievements", JSON.stringify(achievements));
 }
+
+renderQuests();
