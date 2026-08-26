@@ -64,12 +64,18 @@ let playerGold = document.getElementById("playerGold");
 let xpProgress = document.getElementById("xpProgress");
 let playerName = document.getElementById("name");
 let manaDrain = document.getElementById("manaDrain");
+let characterSprite = document.getElementById("characterSprite");
+let characterPortrait = document.getElementById("characterPortrait");
 
 function renderPlayer(){
     playerLevel.textContent = player.level;
     playerGold.textContent = player.gold;
     playerClass.textContent = "Class: " + player.class;
     playerName.textContent = "Name: " + player.name;
+
+    const currentClass = classData[player.class];
+
+    characterPortrait.src = player.portrait;
 
     renderXpBar();
     renderManaBar();
@@ -315,7 +321,7 @@ function getAchievement(){
         alert(achievements[6].name);
         achievements[6].unlocked = true;
     }
-    
+
     saveAchievements();
 }
 
