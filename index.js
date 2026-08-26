@@ -4,15 +4,20 @@ const player = {
     class: "",
     level: 1,
     xp: 0,
-    gold: 0
-};
+    gold: 0,
 
-const stats = {
-    intelligence: 0,
-    wisdom: 0,
-    strength: 0,
-    dexterity: 0,
-    mana: 100
+    hp: 100,
+    maxHp: 100,
+
+    mana: 100,
+    maxMana: 100,
+
+    stats: {
+        intelligence: 0,
+        wisdom: 0,
+        strength: 0,
+        dexterity: 0
+    }
 };
 
 // Load character
@@ -22,22 +27,17 @@ if (savedPlayerData !== null) {
 
     const playerData = JSON.parse(savedPlayerData);
 
-    if (playerData.player.name === "" || playerData.player.class === "") {
+    if (playerData.name === "" || playerData.class === "") {
         window.location.href = "pages/character.html";
     } else {
-        Object.assign(player, playerData.player);
-        Object.assign(stats, playerData.stats);
+        Object.assign(player, playerData);
     }
-
-} else {
+    } else {
     window.location.href = "pages/character.html";
 }
 
 function savePlayerData() {
-    localStorage.setItem("playerData", JSON.stringify({
-        player: player,
-        stats: stats
-    }));
+    localStorage.setItem("playerData", JSON.stringify(player));
 }
 //
 
@@ -90,12 +90,21 @@ let dexterity = document.getElementById("dexterity");
 let mana = document.getElementById("mana");
 
 function renderStats(){
-    intelligence.textContent = "Intelligence: " + stats.intelligence;
-    wisdom.textContent = "Wisdom: " + stats.wisdom;
-    strength.textContent = "Strength: " + stats.strength;
-    dexterity.textContent = "Dexterity: " + stats.dexterity;
-    mana.textContent = "Mana: " + stats.mana;
 
+    intelligence.textContent =
+        "Intelligence: " + player.stats.intelligence;
+
+    wisdom.textContent =
+        "Wisdom: " + player.stats.wisdom;
+
+    strength.textContent =
+        "Strength: " + player.stats.strength;
+
+    dexterity.textContent =
+        "Dexterity: " + player.stats.dexterity;
+
+    mana.textContent =
+        "Mana: " + player.mana;
 }
 
 let questInput = document.getElementById("questInput");
@@ -178,16 +187,19 @@ function completeQuest(index) {
     player.gold += quest.gold;
     quest.rewarded = true;
 
-    stats.mana += 5;
+    player.mana += 5;
 
     if (quest.category === "Study") {
-        stats.intelligence += 2;
+        player.stats.intelligence += 2;
+
     } else if (quest.category === "Train") {
-        stats.strength += 2;
+        player.stats.strength += 2;
+
     } else if (quest.category === "Read") {
-        stats.wisdom += 2;
+        player.stats.wisdom += 2;
+
     } else if (quest.category === "Clean") {
-        stats.dexterity += 2;
+        player.stats.dexterity += 2;
     }
 
     checkLevelUp();
@@ -276,23 +288,23 @@ function getAchievement(){
         alert(achievements[0].name);
         achievements[0].unlocked = true;
     };
-    if(stats.strength === 10 && achievements[3].unlocked === false){
+    if(player.stats.strength === 10 && achievements[3].unlocked === false){
         alert(achievements[3].name);
         achievements[3].unlocked = true;
     }
-    if(stats.dexterity === 10 && achievements[2].unlocked === false){
+    if(player.stats.dexterity === 10 && achievements[2].unlocked === false){
         alert(achievements[2].name);
         achievements[2].unlocked = true;
     }
-    if(stats.intelligence === 10 && achievements[4].unlocked === false){
+    if(player.stats.intelligence === 10 && achievements[4].unlocked === false){
         alert(achievements[4].name);
         achievements[4].unlocked = true;
     }
-    if(stats.mana === 500 && achievements[5].unlocked === false){
+    if(player.stats.mana === 500 && achievements[5].unlocked === false){
         alert(achievements[5].name);
         achievements[5].unlocked = true;
     }
-    if(stats.mana === 1000 && achievements[6].unlocked === false){
+    if(player.stats.mana === 1000 && achievements[6].unlocked === false){
         alert(achievements[6].name);
         achievements[6].unlocked = true;
     }
