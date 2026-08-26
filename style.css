@@ -580,6 +580,7 @@ button, input, select, textarea {
 
 
 /* Tablet Landscape Media Query */
+
 @media(orientation: landscape) and (min-width: 768px) and (max-width: 1366px) and (min-height: 700px){
 
     .dashboard-container {

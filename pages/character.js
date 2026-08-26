@@ -25,48 +25,74 @@ const player = {
 
 const classData = {
     Mage: {
-        intelligence: 8,
-        wisdom: 5,
-        strength: 2,
-        dexterity: 4,
+        stats: {
+            intelligence: 8,
+            wisdom: 5,
+            strength: 2,
+            dexterity: 4
+        },
         maxMana: 150,
-        maxHp: 80
+        maxHp: 80,
+
+        sprite: "",
+        portrait: ""
+
     },
 
     Assassin: {
-        intelligence: 4,
-        wisdom: 3,
-        strength: 5,
-        dexterity: 9,
+        stats: {
+            intelligence: 4,
+            wisdom: 3,
+            strength: 5,
+            dexterity: 9
+        },
         maxMana: 100,
-        maxHp: 90
+        maxHp: 90,
+
+        sprite: "",
+        portrait: ""
     },
 
     Warlord: {
-        intelligence: 3,
-        wisdom: 4,
-        strength: 10,
-        dexterity: 4,
+        stats: {
+            intelligence: 3,
+            wisdom: 4,
+            strength: 10,
+            dexterity: 4
+        },
         maxMana: 80,
-        maxHp: 130
+        maxHp: 130,
+
+        sprite: "",
+        portrait: ""
     },
 
     Alchemist: {
-        intelligence: 9,
-        wisdom: 7,
-        strength: 3,
-        dexterity: 5,
+        stats: {
+            intelligence: 9,
+            wisdom: 7,
+            strength: 3,
+            dexterity: 5
+        },
         maxMana: 130,
-        maxHp: 90
+        maxHp: 90,
+
+        sprite: "",
+        portrait: ""
     },
 
     Berserker: {
-        intelligence: 2,
-        wisdom: 2,
-        strength: 12,
-        dexterity: 6,
+        stats: {
+            intelligence: 2,
+            wisdom: 2,
+            strength: 12,
+            dexterity: 6
+        },
         maxMana: 70,
-        maxHp: 150
+        maxHp: 150,
+
+        sprite: "",
+        portrait: ""
     }
 };
 
@@ -101,10 +127,7 @@ function setStartingStats() {
 
     const selectedClass = classData[player.class];
 
-    player.stats.intelligence = selectedClass.intelligence;
-    player.stats.wisdom = selectedClass.wisdom;
-    player.stats.strength = selectedClass.strength;
-    player.stats.dexterity = selectedClass.dexterity;
+    player.stats = {...selectedClass.stats};
 
     player.maxMana = selectedClass.maxMana;
     player.mana = selectedClass.maxMana;
