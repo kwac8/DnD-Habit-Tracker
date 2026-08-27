@@ -29,17 +29,19 @@ if (savedPlayerData !== null) {
 
     const playerData = JSON.parse(savedPlayerData);
 
-    if (playerData.name === "" || playerData.class === "") {
+    if (
+        !playerData.name ||
+        !playerData.class ||
+        !playerData.portrait
+    ) {
+        localStorage.removeItem("playerData");
         window.location.href = "pages/character.html";
     } else {
         Object.assign(player, playerData);
     }
-    } else {
-    window.location.href = "pages/character.html";
-}
 
-function savePlayerData() {
-    localStorage.setItem("playerData", JSON.stringify(player));
+} else {
+    window.location.href = "pages/character.html";
 }
 //
 
