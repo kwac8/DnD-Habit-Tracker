@@ -478,6 +478,13 @@ button, input, select, textarea {
     border: 3px solid gray;
 }
 
+#gameCanvas {
+    width: 800px;
+    height: 800px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
 /* Mobile Media Query */
 @media (max-width: 600px), (max-height: 600px) and (orientation: landscape) and (pointer: coarse){
 

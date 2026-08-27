@@ -14,6 +14,12 @@ const player = {
     mana: 100,
     maxMana: 100,
 
+    x: 100,
+    y: 100,
+    width: 16,
+    height: 16,
+    speed: 2,
+
     stats: {
         intelligence: 0,
         wisdom: 0,
