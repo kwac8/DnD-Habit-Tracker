@@ -62,6 +62,7 @@ let playerClass = document.getElementById("playerClass");
 let playerLevel = document.getElementById("playerLevel");
 let playerGold = document.getElementById("playerGold");
 let xpProgress = document.getElementById("xpProgress");
+let hpProgress = document.getElementById("hpProgress");
 let playerName = document.getElementById("name");
 let manaDrain = document.getElementById("manaDrain");
 let characterSprite = document.getElementById("characterSprite");
@@ -78,7 +79,17 @@ function renderPlayer(){
     characterPortrait.src = player.portrait;
 
     renderXpBar();
+    renderHpBar();
     renderManaBar();
+}
+
+function renderHpBar(){
+    let percentage = (player.hp / player.maxHp) * 100;
+    
+    percentage = Math.max(percentage, 0);
+    percentage = Math.min(percentage, 100);
+
+    hpProgress.style.width = percentage + "%";
 }
 
 function renderXpBar(){

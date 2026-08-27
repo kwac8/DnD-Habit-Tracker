@@ -173,13 +173,21 @@ button, input, select, textarea {
 .hp-bar{
     flex: 1 1 auto;
     min-width: 0;
-    background-color: rgb(232, 51, 82);
+    background-color: rgb(209, 176, 181);
     border: 2px solid grey;
     border-radius: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
     height: 25px;
     align-items: center;
+}
+
+#hpProgress {
+    width: 0%;
+    height: 100%;
+    background-color: #c3004e;
+    border-radius: 3px;
+    transition: width 0.3s ease;
 }
 
 .hp-label{
