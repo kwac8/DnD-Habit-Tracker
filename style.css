@@ -209,6 +209,30 @@ button, input, select, textarea {
     padding-top: 5px;
 }
 
+.settings-container{
+    display: none;
+    width: 500px;
+    height: 500px;
+    background-color: azure;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    position: fixed;
+    border: 3px solid gray;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.settings-container h1{
+    font-size: clamp(1rem, 1.5vw, 2rem);
+    text-align: center;
+    border-bottom: 2px solid gray;
+}
+
+.settings-container.active{
+    display: block;
+}
+
 /* Achievements Page */
 
 .achievements-container {

@@ -404,5 +404,13 @@ function renderAchievements() {
         achievementsList.appendChild(li);
     }
 }
+
+let settingsBtn = document.getElementById("settingsBtn");
+let displaySettings = document.querySelector(".settings-container");
+
+settingsBtn.addEventListener("click", function(){
+    displaySettings.classList.toggle("active");
+});
+
 renderQuests();
 renderAchievements();
