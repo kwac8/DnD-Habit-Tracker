@@ -10,8 +10,8 @@ const classData = {
         maxMana: 150,
         maxHp: 80,
 
-        sprite: "assets/characters/mage/mage.png",
-        portrait: "assets/characters/mage/mage-portrait.png"
+        sprite: "/assets/characters/mage/mage.png",
+        portrait: "/assets/characters/mage/mage-portrait.png"
     },
 
     Assassin: {
@@ -24,8 +24,8 @@ const classData = {
         maxMana: 100,
         maxHp: 90,
 
-        sprite: "assets/characters/assassin/assassin.png",
-        portrait: "assets/characters/assassin/assassin-portrait.png"
+        sprite: "/assets/characters/assassin/assassin.png",
+        portrait: "/assets/characters/assassin/assassin-portrait.png"
     },
 
     Warlord: {
@@ -38,8 +38,8 @@ const classData = {
         maxMana: 80,
         maxHp: 130,
 
-        sprite: "assets/characters/warlord/warlord.png",
-        portrait: "assets/characters/warlord/warlord-portrait.png"
+        sprite: "/assets/characters/warlord/warlord.png",
+        portrait: "/assets/characters/warlord/warlord-portrait.png"
     },
 
     Alchemist: {
@@ -52,8 +52,8 @@ const classData = {
         maxMana: 130,
         maxHp: 90,
 
-        sprite: "assets/characters/alchemist/alchemist.png",
-        portrait: "assets/characters/alchemist/alchemist-portrait.png"
+        sprite: "/assets/characters/alchemist/alchemist.png",
+        portrait: "/assets/characters/alchemist/alchemist-portrait.png"
     },
 
     Berserker: {
@@ -66,7 +66,7 @@ const classData = {
         maxMana: 70,
         maxHp: 150,
 
-        sprite: "assets/characters/berserker/berserker.png",
-        portrait: "assets/characters/berserker/berserker-portrait.png"
+        sprite: "/assets/characters/berserker/berserker.png",
+        portrait: "/assets/characters/berserker/berserker-portrait.png"
     }
 };
