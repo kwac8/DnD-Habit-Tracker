@@ -377,6 +377,12 @@ function saveAchievements() {
 }
 
 let achievementsList = document.getElementById("achievements-list");
+let achievementsBtn = document.getElementById("achievements-btn");
+let displayAchievements = document.querySelector(".achievements-container");
+
+achievementsBtn.addEventListener("click", function(){
+    displayAchievements.classList.toggle("active");
+});
 
 function renderAchievements() {
     achievementsList.innerHTML = "";
