@@ -530,6 +530,38 @@ button, input, select, textarea {
         height: 10px;
     }
 
+    /* Settings */
+    .settings-container {
+        width: min(85vw, 500px);
+        height: auto;
+        max-height: 80dvh;
+        padding: 15px;
+        overflow-y: auto;
+    }
+
+    /* Achievements */
+    .achievements-container {
+        width: min(85vw, 350px);
+        max-height: 80dvh;
+        overflow-y: auto;
+        padding: 15px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .achievements-container h1 {
+        font-size: 1.2rem;
+    }
+
+    #achievements-list {
+        padding: 10px;
+    }
+
+    #achievements-list li {
+        font-size: 0.9rem;
+        line-height: 30px;
+    }
     
     /* Quests Page */
     .quests-page{
@@ -627,6 +659,24 @@ button, input, select, textarea {
         padding: 5px;
         line-height: 25px;
     }
+
+    .achievements-container {
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 250px;
+        max-width: 80vw;
+        height: 200px;
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .achievements-container.active{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 /* Tablet Media Query */
@@ -694,6 +744,41 @@ button, input, select, textarea {
         line-height: 30px;
         font-size: 1rem;
     }
+
+    /* Settings */
+    .settings-container {
+        width: 70vw;
+        max-width: 600px;
+        height: auto;
+        max-height: 80dvh;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    /* Achievements */
+    .achievements-container {
+        width: 40vw;
+        max-width: 400px;
+        max-height: 80dvh;
+        overflow-y: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+    }
+
+    .achievements-container h1 {
+        font-size: 1.5rem;
+    }
+
+    #achievements-list {
+        padding: 15px;
+    }
+
+    #achievements-list li {
+        font-size: 1rem;
+        line-height: 35px;
+    }
 }
 
 
@@ -753,5 +838,25 @@ button, input, select, textarea {
         flex: 1;
         min-height: 0;
         overflow-y: auto;
+    }
+
+        /* Settings */
+    .settings-container {
+        width: 50vw;
+        max-width: 600px;
+        height: auto;
+        max-height: 80dvh;
+        overflow-y: auto;
+    }
+
+    /* Achievements */
+    .achievements-container {
+        width: 35vw;
+        max-width: 400px;
+        max-height: 80dvh;
+        overflow-y: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
