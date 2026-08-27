@@ -177,7 +177,7 @@ function renderQuests() {
         let quest = myQuests[i];
 
         let li = document.createElement("li")
-        li.className = "questItem";;
+        li.className = "questItem";
 
         let checkbox = document.createElement("input");
         checkbox.type = "checkbox";
@@ -189,6 +189,10 @@ function renderQuests() {
             span.className = "questDone";
         }
 
+        let rewardInfo = document.createElement("span");
+        rewardInfo.textContent = `+${quest.xp} XP | +${quest.gold} Gold | -${quest.manaCost} Mana`;
+        rewardInfo.className = "questRewards";
+
         let deleteBtn = document.createElement("button");
         deleteBtn.textContent = "×";
         deleteBtn.className = "deleteQuestBtn";
@@ -199,9 +203,16 @@ function renderQuests() {
         checkbox.addEventListener("change", handleCheck);
         deleteBtn.addEventListener("click", handleDelete);
 
+        let questContent = document.createElement("div");
+        questContent.className = "questContent";
+
+        questContent.appendChild(span);
+        questContent.appendChild(rewardInfo);
+
         li.appendChild(checkbox);
-        li.appendChild(span);
+        li.appendChild(questContent);
         li.appendChild(deleteBtn);
+
         questList.appendChild(li);
     }
 

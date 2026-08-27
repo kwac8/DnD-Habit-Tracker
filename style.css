@@ -316,6 +316,43 @@ button, input, select, textarea {
     overscroll-behavior: contain;
 }
 
+.questItem {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    gap: 5px;
+    padding: 6px 0;
+    margin: 0;
+    font-size: clamp(.7rem, 1.2vw, 3rem);
+    line-height: 1.5;
+}
+
+.questContent {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.questContent span:first-child {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.questRewards {
+    display: block;
+    font-size: 0.7rem;
+    opacity: 0.7;
+    white-space: nowrap;
+}
+
+.questItem span:first-of-type {
+    flex: 1;
+}
+
 /* Quest input + button */
 .quest-input-row {
     display: flex;
@@ -354,12 +391,13 @@ button, input, select, textarea {
 /* Quest list */
 #questList {
     list-style: none;
-    padding: 0;
-    padding-right: 20px;
+    padding: 0 20px 0 0;
     margin: 0;
     width: 100%;
+    max-width: 100%;
     height: calc(100% - 40px);
     overflow-y: auto;
+    overflow-x: hidden;
     color: #567CBD;
     letter-spacing: 2px;
     scrollbar-width: thin;
@@ -391,12 +429,6 @@ button, input, select, textarea {
 }
 
 /* Quest text */
-.questItem span {
-    flex: 1;
-    margin: 0;
-    padding: 0;
-}
-
 .questDone { text-decoration: line-through; opacity: 0.5; }
 
 .deleteQuestBtn {
