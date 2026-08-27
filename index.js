@@ -329,7 +329,20 @@ let achievements = [
     { name: "Bankai", unlocked: false }
 ];
 
+let savedAchievements = localStorage.getItem("achievements");
+
+if (savedAchievements !== null) {
+    achievements = JSON.parse(savedAchievements);
+}
+
 function getAchievement(){
+
+    console.log("Checking achievements...");
+    console.log("Level:", player.level);
+    console.log("Strength:", player.stats.strength);
+    console.log("Dexterity:", player.stats.dexterity);
+    console.log("Intelligence:", player.stats.intelligence);
+
     if(player.level === 2 && achievements[0].unlocked === false){
         alert(achievements[0].name);
         achievements[0].unlocked = true;
@@ -356,10 +369,34 @@ function getAchievement(){
     }
 
     saveAchievements();
+    renderAchievements();
 }
 
 function saveAchievements() {
     localStorage.setItem("achievements", JSON.stringify(achievements));
 }
 
+let achievementsList = document.getElementById("achievements-list");
+
+function renderAchievements() {
+    achievementsList.innerHTML = "";
+
+    achievements.sort(function(a, b){
+        return b.unlocked - a.unlocked;
+    });
+
+    for(let i = 0; i < achievements.length; i++){
+
+        let li = document.createElement("li");
+
+        if(achievements[i].unlocked === true){
+            li.textContent = achievements[i].name;
+        } else {
+            li.textContent = "Locked: " + achievements[i].name;
+            li.style.backgroundColor = "rgba(105, 133, 185, 0.56)";
+        }
+        achievementsList.appendChild(li);
+    }
+}
 renderQuests();
+renderAchievements();
