@@ -45,6 +45,25 @@ if (savedPlayerData !== null) {
 }
 //
 
+// Reset Character
+const resetBtn = document.getElementById("reset-character");
+
+resetBtn.addEventListener("click", function(){
+
+    let confirmed = confirm(
+        "Do you wish to create a new character?\n\nNote: current character and data will be lost permenantly."
+    );
+
+    if(confirmed === true){
+        localStorage.removeItem("playerData");
+        localStorage.removeItem("myQuests");
+        localStorage.removeItem("achievements");
+
+        window.location.href = "pages/character.html";
+    }
+});
+//
+
 function getXpRequired(){
     return player.level * 100;
 }
