@@ -65,6 +65,7 @@ let playerLevel = document.getElementById("playerLevel");
 let playerGold = document.getElementById("playerGold");
 let xpProgress = document.getElementById("xpProgress");
 let hpProgress = document.getElementById("hpProgress");
+let hpInfo = document.getElementById("hp-info");
 let playerName = document.getElementById("name");
 let manaDrain = document.getElementById("manaDrain");
 let characterSprite = document.getElementById("characterSprite");
@@ -75,8 +76,6 @@ function renderPlayer(){
     playerGold.textContent = player.gold;
     playerClass.textContent = "Class: " + player.class;
     playerName.textContent = "Name: " + player.name;
-
-    const currentClass = classData[player.class];
 
     characterPortrait.src = player.portrait;
 
@@ -92,6 +91,8 @@ function renderHpBar(){
     percentage = Math.min(percentage, 100);
 
     hpProgress.style.width = percentage + "%";
+
+    hpInfo.textContent = player.hp + " / " + player.maxHp;
 }
 
 function renderXpBar(){

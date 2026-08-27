@@ -179,7 +179,8 @@ button, input, select, textarea {
     margin-top: 5px;
     margin-bottom: 5px;
     height: 25px;
-    align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
 #hpProgress {
@@ -188,6 +189,19 @@ button, input, select, textarea {
     background-color: #c3004e;
     border-radius: 3px;
     transition: width 0.3s ease;
+    position: absolute;
+}
+
+#hp-info {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 2;
+    color: white;
 }
 
 .hp-label{
